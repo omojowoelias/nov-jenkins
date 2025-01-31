@@ -1,12 +1,12 @@
-resource "aws_internet" "mobann_igw" {
-    vpc_id = var.vpc.id
+resource "aws_internet_gateway" "mobann_igw" {
+    vpc_id = var.vpc_id
     tags = {
         Name = "mobann-igw"
     }
 }
 
 resource "aws_route_table" "mobann_public_route_table" {
-    vpc_id = var.vpc.id
+    vpc_id = var.vpc_id
     route {
         cidr_block = "0.0.0.0/0"
         gateway_id = aws_internet_gateway.mobann_igw.id
