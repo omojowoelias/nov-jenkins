@@ -23,9 +23,10 @@ resource "aws_security_group" "jenkins_sg" {
 }
 
 resource "aws_instance" "jenkins" {
-    ami = "ami-001c30f8caee754c7"
+    //ami = "ami-00280090acd78f07f"
+    ami = "ami-002c065c915689a19"
     instance_type = "t3.medium"
-    key_name = "mobann"
+    key_name = "nov24"
     subnet_id = element(aws_subnet.public_subnet[*].id, 0)
     vpc_security_group_ids = [aws_security_group.jenkins_sg.id]
     associate_public_ip_address = true
@@ -36,8 +37,8 @@ resource "aws_instance" "jenkins" {
     }
 
     root_block_device {
-        volume_size = 8
-        volume_type = "gp2" 
+        volume_size = 50
+        volume_type = "gp3" 
         delete_on_termination = true
     }
 }
