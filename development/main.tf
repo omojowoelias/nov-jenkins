@@ -32,7 +32,8 @@ module "mobann_module" {
   source = "./modules"
   vpc_id = aws_vpc.mobann_vpc.id
  vpc_cidr_block = aws_vpc.mobann_vpc.cidr_block
-availability_zones = var.availability_zones
+//availability_zones = var.availability_zones
+availability_zones = ["us-east-2a", "us-east-2b", "us-east-2c"]
 public_subnet_count = var.public_subnet_count
 private_subnet_count = var.private_subnet_count
 }
